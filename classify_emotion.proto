@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+
+// The request message containing the user's name.
+message RequestImage {
+    bytes orig_image =1;
+}
+// The request message containing the user's name.
+message RequestEmotions {
+    bytes orig_image =1; 
+}
+message RespondImages {
+    string image = 1;
+}
+// The response message containing the information of person with name from input
+message RespondEmotions {
+  string emotions = 1;
+}
+service AsillaService {
+    rpc preporcess_emotion (RequestImage) returns (RespondImages) {}
+    rpc classify_emotion (RequestEmotions) returns (RespondEmotions) {}
+}
